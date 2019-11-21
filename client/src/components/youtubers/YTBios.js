@@ -3,6 +3,7 @@ import YTBioItem from './YTBioItem';
 import '../../App.css';
 
 class YTBios extends Component {
+
     state = {
         bios: [
             {
@@ -29,7 +30,7 @@ class YTBios extends Component {
             {
                 name: 'Bestinwest',
                 key: '4',
-                bio: `Pokémon fan for over 20 years and avid video game collector/gamer. Love competition and testing my skill against others. I guess you could say I love being the Best ;)`,
+            bio: `Pokémon fan for over 20 years and avid video game collector/gamer. Love competition and testing my skill against others. I guess you could say I love being the Best ;)`,
                 logo: './profiles/bestinwest.jpg',
                 channel: 'https://www.youtube.com/user/Bestinwest'
             },
