@@ -132,6 +132,33 @@ header img:hover{background-color: #9aaae5;}
 }
 .channel_link:hover{color:white;}
 
+.ecelite4 {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items:center;
+}
+
+.elite4members {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items:center;
+}
+.elite4members .member{padding: 5px; text-align: center}
+.champs .profile{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items:center;
+}
+.team {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items:center;
+}
+.team .mon{padding: 5px 10px;text-align: center}
 
 
 @media (max-width: 380px) {
