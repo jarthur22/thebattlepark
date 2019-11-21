@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Uploads from './Uploads';
 import YTBios from './YTBios';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import {Link} from 'react-router-dom';
 
 class Youtubers extends Component {
