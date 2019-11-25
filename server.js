@@ -23,9 +23,6 @@ if(process.env.NODE_ENV === 'production'){
 
 const port = process.env.PORT || 4000;
 
-app.get('/.well-known/pki-validation/8D90E199F9A50EA20EB5E4EC0CE1F0D0.txt', (req, res) => {
-    res.sendfile('8D90E199F9A50EA20EB5E4EC0CE1F0D0.txt');
-});
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
