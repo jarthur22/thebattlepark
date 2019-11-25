@@ -4,8 +4,7 @@ const mongoURI = 'mongodb+srv://bpapp:bpapp123@cluster0-kxab2.mongodb.net/test?r
 const path = require('path');
 
 const app = express();
-
-
+app.use(express.json());
 
 //connect to mongoDB
 mongoose.connect(mongoURI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: true})
