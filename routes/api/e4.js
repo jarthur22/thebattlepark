@@ -3,7 +3,7 @@ const E4 = require('../../models/E4');
 const app = express();
 
 // @route GET /api/e4/:type
-// @desc Get all elite four members
+// @desc Get all elite 4 members/champions
 // @access Public
 app.get('/:type', (req, res) => {
     E4.find({type: req.params.type})

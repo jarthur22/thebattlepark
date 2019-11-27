@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
 import ChampItem from './ChampItem';
+import axios from 'axios';
 
 
 class EcElite4 extends Component {
+    _isMounted = false;
+
     state = {
-        champs: [
-            {
-                username: "KiengIv",
-                profile: "./youtubers/profiles/kieng.jpg",
-                team:[
-                    "Charizard",
-                    "Venusaur",
-                    "Blastoise",
-                    "Pikachu",
-                    "Snorlax",
-                    "Lapras"
-                ]
+        e4: [],
+        champs: []
+    }
+
+    componentDidMount(){
+        this._isMounted = true;
+        axios.get('/api/e4/e4')
+        .then(res => {
+            if(res.data.length > 0){
+                if(this._isMounted) this.setState({e4: res.data});
             }
-        ]
+        });
+        axios.get('/api/e4/champ')
+        .then(res => {
+            if(res.data.length > 0){
+                if(this._isMounted) this.setState({champs: res.data});
+            }
+        });
     }
 
     render() {
@@ -28,22 +35,13 @@ class EcElite4 extends Component {
                 <br/>
                 <div className="elite4members">
                     {/* after members are in db, get request and map members */}
-                    <div className="member">
-                        <img src={require("./youtubers/profiles/bestinwest.jpg")} alt="elite 4 member"/><br/>
-                        Bestinwest
-                    </div>
-                    <div className="member">
-                        <img src={require("./youtubers/profiles/bestinwest.jpg")} alt="elite 4 member"/><br/>
-                        Bestinwest
-                    </div>
-                    <div className="member">
-                        <img src={require("./youtubers/profiles/bestinwest.jpg")} alt="elite 4 member"/><br/>
-                        Bestinwest
-                    </div>
-                    <div className="member">
-                        <img src={require("./youtubers/profiles/bestinwest.jpg")} alt="elite 4 member"/><br/>
-                        Bestinwest
-                    </div>
+                    
+                    {this.state.e4.map((member) => (
+                        <div className="member" key={member.username}>
+                            <img src={require(`./youtubers/profiles/${member.username}.jpg`)} alt="elite 4 member"/><br/>
+                            {member.username}
+                        </div>
+                    ))}
                 </div>
                 <br/>
                 <h2>Hall of Champions</h2>
