@@ -30,7 +30,8 @@ class EcElite4 extends Component {
     render() {
         return (
             <div className="ecelite4">
-                <h1 style={headerStyle}>El Cerrito Elite 4</h1>
+                <h2 style={headerStyle}>El Cerrito Elite 4</h2>
+                <img src={`${process.env.PUBLIC_URL}/E4Logo.png`} alt="Elite 4 Logo" style={{width: '200px'}}/><br/>
                 <p>The greatest players in the region. Are you prepared to challenge this gauntlet?</p>
                 <br/>
                 <div className="elite4members">
@@ -56,9 +57,10 @@ class EcElite4 extends Component {
 }
 
 const headerStyle = {
-    fontSize: '45px',
+    fontSize: '30px',
     textShadow: '3px -2px grey',
-    paddingTop: '50px'
+    paddingTop: '50px',
+    marginBottom: '-10px'
 }
 
 
