@@ -2,14 +2,20 @@ const express = require('express');
 const mongoose = require('mongoose');
 const mongoURI = 'mongodb+srv://bpapp:bpapp123@cluster0-kxab2.mongodb.net/test?retryWrites=true&w=majority';
 const path = require('path');
+const e4 = require('./routes/api/e4');
 
 const app = express();
+app.use(express.json());
 
+//USe Routes
+app.use('/api/e4', e4);
 
 //connect to mongoDB
-mongoose.connect(mongoURI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: true})
-    .then(() => console.log('MongoDB connected..'))
-    .catch(err => console.log(err));
+mongoose.connect(mongoURI, {useNewUrlParser: true, useCreateIndex: true, useFindAndModify: true})
+.then(() => console.log('MongoDB connected..'))
+.catch(err => console.log(err));
+
+
 
 //Serve static assets if in production
 if(process.env.NODE_ENV === 'production'){
