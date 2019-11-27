@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const mongoURI = 'mongodb+srv://bpapp:bpapp123@cluster0-kxab2.mongodb.net/test?retryWrites=true&w=majority';
+const mongoURI = 'mongodb+srv://bpapp:bpapp123@cluster0-kxab2.mongodb.net/thebattleparkdb?retryWrites=true&w=majority';
 const path = require('path');
 const e4 = require('./routes/api/e4');
 
@@ -11,7 +11,7 @@ app.use(express.json());
 app.use('/api/e4', e4);
 
 //connect to mongoDB
-mongoose.connect(mongoURI, {useNewUrlParser: true, useCreateIndex: true, useFindAndModify: true})
+mongoose.connect(mongoURI, {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, useFindAndModify: true})
 .then(() => console.log('MongoDB connected..'))
 .catch(err => console.log(err));
 

@@ -7,4 +7,4 @@ const E4Schema = new Schema ({
     team: [String]
 }, {collection: 'e4'});
 
-module.exports = E4 = mongoose.model('e4', E4Schema);
+module.exports = E4 = mongoose.model("e4", E4Schema);
