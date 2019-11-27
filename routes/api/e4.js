@@ -8,7 +8,7 @@ const app = express();
 app.get('/:type', (req, res) => {
     E4.find({type: req.params.type})
     .then(results => 
-        results.length > 0 ? res.json(results[0]): res.sendStatus(400))
+        results.length > 0 ? res.json(results): res.sendStatus(400))
     .catch(err => res.json(err));
 });
 
