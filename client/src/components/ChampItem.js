@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 
 class ChampItem extends Component {
+
+    parseSpritePath = (mon) => {
+        var spritePath = mon.toLowerCase().replace(" ", "-").replace("alolan", "alola");
+        spritePath = `${process.env.PUBLIC_URL}/sprites/${spritePath}.png`;
+        return spritePath;
+    }
+
     render() {
         const username = this.props.champ.username;
        // const profile = this.props.champ.profile;
@@ -13,11 +20,10 @@ class ChampItem extends Component {
                     <br/> */}
                     {username}
                 </div>
-                <br/>
                 <div className="team">
                     {team.map((mon) => (
                         <div className="mon" key={mon}>
-                            <img src={require("../images/bplogo.png")} alt={mon} style={{width: "40px"}}/>
+                            <img src={this.parseSpritePath(mon)} alt={mon} style={{width: "90px"}}/>
                             <br/>
                             {mon}
                         </div>
