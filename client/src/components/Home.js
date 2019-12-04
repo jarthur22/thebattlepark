@@ -23,7 +23,7 @@ class Home extends Component {
 
 const thisStyle = {
     textAlign: 'center',
-    height: '550px',
+    height: '100vh',
     marginTop:'-170px',
     backgroundImage: `url(${bplogo})`,
     backgroundPosition: 'center',
@@ -35,7 +35,7 @@ const thisStyle = {
 const headerStyle = {
     fontSize: '45px',
     textShadow: '3px -2px grey',
-    paddingTop: '210px'
+    paddingTop: '40vh'
 }
 
 export default Home;
