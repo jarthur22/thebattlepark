@@ -23,14 +23,6 @@ class Youtubers extends Component {
           id: 'UUZojcYclMVVsBob2IstepEA'
         },
         {
-          name: 'Elite Four TV',
-          id: 'UUz0vZmmKHbGa1ZVNgJEw2bw'
-        },
-        {
-          name: 'JayDevin',
-          id: 'UUllfYZCluPnKGEhRd-gSuBg'
-        },
-        {
           name: 'JFarmakis',
           id: 'UUPsLn8LXKrBMqXYE3B3GUFg'
         },

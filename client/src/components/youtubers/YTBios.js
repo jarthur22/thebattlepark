@@ -35,13 +35,6 @@ class YTBios extends Component {
                 channel: 'https://www.youtube.com/user/Bestinwest'
             },
             {
-                name: 'Elite Four TV',
-                key: '5',
-                bio: `Elite Four TV is about interview, strategies, tips and tricks for PVP, and how to min-max our game time so our spouses don't beat us up before we battle it out at the next tournament!`,
-                logo: './profiles/EFTV.jpg',
-                channel: 'https://www.youtube.com/channel/UCz0vZmmKHbGa1ZVNgJEw2bw'
-            },
-            {
                 name: 'JFarmakis',
                 key: '6',
                 bio: `Hosted by an experienced Pokémon GO player and administrator of a local Toronto group with over 400 users, this channel features all you need to know about PoGo PVP.`,
@@ -89,13 +82,6 @@ class YTBios extends Component {
                 bio: `With his trusty whiteboard, Atticus Nair brings you an in-depth analysis of the Pokemon GO PvP meta, including Silph Arena monthly Cups.`,
                 logo: './profiles/atticusnair.jpg',
                 channel: 'https://www.youtube.com/user/AtticusNair'
-            },
-            {
-                name: 'JayDevin',
-                key: '13',
-                bio: `JayDevin *cue bongos* brings you detailed practice battles for Pokemon GO PvP, accompanied by the sharpest witt and best sound effects around.`,
-                logo: './profiles/jaydevin.jpg',
-                channel: 'https://www.youtube.com/channel/UCllfYZCluPnKGEhRd-gSuBg'
             }
         ]
     }
