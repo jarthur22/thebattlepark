@@ -7,8 +7,9 @@ const e4 = require('./routes/api/e4');
 const app = express();
 app.use(express.json());
 
-//USe Routes
+//Use Routes
 app.use('/api/e4', e4);
+
 
 //connect to mongoDB
 mongoose.connect(mongoURI, {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, useFindAndModify: true})
