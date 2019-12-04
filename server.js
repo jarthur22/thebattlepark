@@ -9,7 +9,7 @@ app.use(express.json());
 
 //Use Routes
 app.use('/api/e4', e4);
-
+app.use('/api/discord', require('./routes/api/discord'));
 
 //connect to mongoDB
 mongoose.connect(mongoURI, {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, useFindAndModify: true})
