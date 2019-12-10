@@ -6,6 +6,7 @@ import Footer from './components/layout/Footer';
 import Home from './components/Home';
 import Youtubers from './components/youtubers/Youtubers';
 import EcElite4 from './components/EcElite4';
+import Login from './components/Login';
 
 class App extends Component{
 
@@ -28,6 +29,7 @@ class App extends Component{
               <Route exact path="/" component={Home}/>
               <Route path="/youtubers" component={Youtubers}/>
               <Route path="/ecelite4" component={EcElite4}/>
+              <Route path="/login" component={Login}/>
             </Switch>
             <Footer/>
         </div>
