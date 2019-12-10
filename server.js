@@ -3,12 +3,14 @@ const mongoose = require('mongoose');
 const mongoURI = 'mongodb+srv://bpapp:bpapp123@cluster0-kxab2.mongodb.net/thebattleparkdb?retryWrites=true&w=majority';
 const path = require('path');
 const e4 = require('./routes/api/e4');
+const discord = require('./routes/api/discord');
 
 const app = express();
 app.use(express.json());
 
 //Use Routes
 app.use('/api/e4', e4);
+//app.use('/api/discord', discord);
 
 
 //connect to mongoDB
@@ -29,6 +31,11 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 const port = process.env.PORT || 4000;
+
+app.get('/login', (req, res) => {
+    //res.status(200).sendFile(__dirname, '/#/login/callback');
+    res.status(200).redirect('http://localhost:3000/#/login/callback');
+});
 
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
