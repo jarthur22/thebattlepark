@@ -32,10 +32,10 @@ if(process.env.NODE_ENV === 'production'){
 
 const port = process.env.PORT || 4000;
 
-app.get('/login', (req, res) => {
+/* app.get('/login', (req, res) => {
     //res.status(200).sendFile(__dirname, '/#/login/callback');
     res.status(200).redirect('http://localhost:3000/#/login/callback');
-});
+}); */
 
 
 app.listen(port, () => console.log(`Server started on port ${port}`));

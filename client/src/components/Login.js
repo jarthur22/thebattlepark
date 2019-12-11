@@ -1,16 +1,35 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import btoa from 'btoa';
 
 class Login extends Component {
+    CLIENT_ID = '562770948764205077';
+    CLIENT_SECRET = '-eQrhkMMZS-aEvuzpCJuoQ9z6BMNZdSk'
+    redirect = encodeURIComponent('http://localhost:3000/');
+    code = '';
+    response = {};
+
+    componentDidMount() {
+        if(window.localStorage.getItem('authCode')){
+            this.code = window.localStorage.getItem('authCode');
+            const creds = btoa(`${this.CLIENT_ID}:${this.CLIENT_SECRET}`);
+            //console.log(creds);
+            axios.post(`https://discordapp.com/api/oauth2/token?grant_type=authorization_code&code=${this.code}&redirect_uri=${this.redirect}`,
+            {}, {headers: {Authorization: `Basic ${creds}`,}}).then(res => {
+                this.response = res.data;
+                console.log(this.response.access_token);
+            }).catch(err => console.log(err));
+        }
+    }
 
     goToDiscordAuth = () => {
-        console.log('here')
-        const CLIENT_ID = '562770948764205077';
-        const redirect = encodeURIComponent('http://localhost:3000/');
         //axios.get('/api/discord/login').then(console.log('Redirecting..'));
-        window.location.href = `https://discordapp.com/api/oauth2/authorize?client_id=${CLIENT_ID}&scope=identify&response_type=code&redirect_uri=${redirect}`;
+        window.location.href = `https://discordapp.com/api/oauth2/authorize?client_id=${this.CLIENT_ID}&scope=identify%20guilds&response_type=code&redirect_uri=${this.redirect}`;
     }
 
     render() {
+        //console.log(window.localStorage.getItem('authCode'));
+        //console.log(this.redirect);
         return (
             <div style={thisStyle}>
                 <button className="discord_button" onClick={this.goToDiscordAuth}>Login with Discord</button>

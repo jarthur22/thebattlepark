@@ -10,6 +10,18 @@ import Login from './components/Login';
 
 class App extends Component{
 
+  state = {
+    discordAuthCode: ''
+  }
+
+  componentDidMount() {
+    if(window.location.href.includes('?code=')){
+      var code = window.location.href.split('code=')[1];
+      code = code.split('#')[0];
+      this.setState({discordAuthCode: code});
+    }
+  }
+
   getStyle = () => {
     return {
       backgroundColor: '#111111',
@@ -21,6 +33,12 @@ class App extends Component{
   }
 
   render(){
+
+    if(this.state.discordAuthCode !== ''){
+      window.localStorage.setItem('authCode', this.state.discordAuthCode);
+      window.location.href = '/#/login';
+    }
+
     return (
       <Router>
         <div className="App" style={this.getStyle()}>
