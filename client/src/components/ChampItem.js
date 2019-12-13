@@ -29,6 +29,7 @@ class ChampItem extends Component {
                         </div>
                     ))}
                 </div>
+                
             </div>
         )
     }
