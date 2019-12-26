@@ -5,10 +5,20 @@ import '../../App.css';
 
 
 const Header = (props) => {
-    
+    var avatarLink = props.user.id ?
+    `http://cdn.discordapp.com/avatars/${props.user.id}/${props.user.avatar}.png?size=2048` :
+    `${process.env.PUBLIC_URL}/bplogo.png`;
+
     var loginBtn = props.loggedIn ?
-    <Link className="link" to="/login">Logout</Link> :
+    <Link className="profile_link" to="/login"><img src={avatarLink} alt="profile" style={{
+        width: "49px",
+        height: "49px",
+        padding: "0",
+        borderRadius: "50%",
+        border: "1px solid blue"}}/></Link> :
     <Link className="link" to="/login">Login</Link>;
+
+    
 
     return (
         <header>

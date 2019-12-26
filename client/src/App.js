@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import './App.css';
 import Header from './components/layout/Header';
@@ -12,7 +13,10 @@ class App extends Component{
 
   state = {
     discordAuthCode: '',
-    loggedIn: false
+    loggedIn: false,
+    user: window.localStorage.getItem('discord_user') ?
+      JSON.parse(window.localStorage.getItem('discord_user')):
+      {}
   }
 
   componentDidMount() {
@@ -20,6 +24,9 @@ class App extends Component{
       var code = window.location.href.split('code=')[1];
       code = code.split('#')[0];
       this.setState({discordAuthCode: code});
+    }
+    if(window.localStorage.getItem('discord_token')){
+      this.setState({loggedIn: true});
     }
   }
 
@@ -42,7 +49,16 @@ class App extends Component{
   }
 
   setLoggedIn = () => {
-    this.setState({loggedIn: true});
+    axios.get('https://discordapp.com/api/users/@me',
+        {headers: {Authorization: `Bearer ${window.localStorage.getItem('discord_token')}`,}})
+        .then(res => {
+            window.localStorage.setItem('discord_user', JSON.stringify(res.data));
+            this.setState({
+              user: JSON.parse(window.localStorage.getItem('discord_user')),
+              loggedIn: true
+            })
+        })
+        .catch(err => console.log(err));
   }
 
   render(){
@@ -55,7 +71,7 @@ class App extends Component{
     return (
       <Router>
         <div className="App" style={this.getStyle()}>
-            <Header loggedIn={this.state.loggedIn}/>
+            <Header loggedIn={this.state.loggedIn} user={this.state.user}/>
             <Switch>
               <Route exact path="/" component={Home}/>
               <Route path="/youtubers" component={Youtubers}/>

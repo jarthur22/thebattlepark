@@ -30,7 +30,19 @@ header img:hover{background-color: #9aaae5;}
     padding: 19px 10px;
     font-size: large;
 }
-.link:hover {background-color: #9aaae5;}
+
+
+.profile_link{
+    float: right;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 4px 10px;
+    margin-left:-8px;
+    font-size: medium;
+}
+
+.link:hover, .profile_link:hover {background-color: #9aaae5;}
 
 .discord_button {
     background-color: #738adb;
