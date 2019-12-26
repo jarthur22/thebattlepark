@@ -7,17 +7,18 @@ class Login extends Component {
     CLIENT_SECRET = '-eQrhkMMZS-aEvuzpCJuoQ9z6BMNZdSk'
     redirect = encodeURIComponent('http://localhost:3000/');
     code = '';
-    response = {};
 
     componentDidMount() {
         if(window.localStorage.getItem('authCode')){
             this.code = window.localStorage.getItem('authCode');
+            window.localStorage.removeItem('authCode');
             const creds = btoa(`${this.CLIENT_ID}:${this.CLIENT_SECRET}`);
             //console.log(creds);
             axios.post(`https://discordapp.com/api/oauth2/token?grant_type=authorization_code&code=${this.code}&redirect_uri=${this.redirect}`,
             {}, {headers: {Authorization: `Basic ${creds}`,}}).then(res => {
-                this.response = res.data;
-                console.log(this.response.access_token);
+                window.localStorage.setItem('discord_token', res.data.access_token)
+                console.log(res.data.access_token);
+                this.props.setLoggedIn();
             }).catch(err => console.log(err));
         }
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import './App.css';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
@@ -11,7 +11,8 @@ import Login from './components/Login';
 class App extends Component{
 
   state = {
-    discordAuthCode: ''
+    discordAuthCode: '',
+    loggedIn: false
   }
 
   componentDidMount() {
@@ -32,6 +33,18 @@ class App extends Component{
     }
   }
 
+  getLoginBtn = () => {
+    if(this.loggedIn){
+      return <Link className="link" to="/login">Logout</Link>;
+    }else{
+      return <Link className="link" to="/login">Login</Link>;
+    }
+  }
+
+  setLoggedIn = () => {
+    this.setState({loggedIn: true});
+  }
+
   render(){
 
     if(this.state.discordAuthCode !== ''){
@@ -42,12 +55,12 @@ class App extends Component{
     return (
       <Router>
         <div className="App" style={this.getStyle()}>
-            <Header/>
+            <Header loggedIn={this.state.loggedIn}/>
             <Switch>
               <Route exact path="/" component={Home}/>
               <Route path="/youtubers" component={Youtubers}/>
               <Route path="/ecelite4" component={EcElite4}/>
-              <Route path="/login" component={Login}/>
+              <Route path="/login" component={() => <Login setLoggedIn={this.setLoggedIn}/>}/>
             </Switch>
             <Footer/>
         </div>
