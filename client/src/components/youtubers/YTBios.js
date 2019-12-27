@@ -42,6 +42,13 @@ class YTBios extends Component {
                 channel: 'https://www.youtube.com/channel/UCPsLn8LXKrBMqXYE3B3GUFg'
             },
             {
+                name: 'PvP Steve',
+                key: '13',
+                bio: `PvP Steve is a man of many talents - noodly meta infographics made in MS Paint, tournament shoutcasts and battle videos, and writing bios about himself in the third person.`,
+                logo: './profiles/pvpsteve.jpg',
+                channel: 'https://www.youtube.com/channel/UC8Pdi3ylT6zVNomfsgQgSgA'
+            },
+            {
                 name: 'MattyFBaby',
                 key: '7',
                 bio: `Pokemon GO PvP professor, Boulder, Twilight, and Tempest Cup Winner!`,
