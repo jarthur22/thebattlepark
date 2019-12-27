@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import bpbanner from './bpbanner.png';
 import '../../App.css';
 
 
@@ -10,7 +9,7 @@ const Header = (props) => {
     `${process.env.PUBLIC_URL}/bplogo.png`;
 
     var loginBtn = props.loggedIn ?
-    <Link className="profile_link" to="/login"><img src={avatarLink} alt="profile" style={{
+    <Link className="profile_link" to="/account"><img src={avatarLink} alt="profile" style={{
         width: "49px",
         height: "49px",
         padding: "0",
@@ -23,7 +22,7 @@ const Header = (props) => {
     return (
         <header>
             <div className="header_left">
-                <Link to="/"><img src={bpbanner} alt ="The Battle Park"></img></Link>
+                <Link to="/"><img src={`${process.env.PUBLIC_URL}/bpbanner.png`} alt ="The Battle Park"></img></Link>
             </div>
             <div className="header_right">
                 {loginBtn}

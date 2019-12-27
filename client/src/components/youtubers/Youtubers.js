@@ -27,6 +27,10 @@ class Youtubers extends Component {
           id: 'UUPsLn8LXKrBMqXYE3B3GUFg'
         },
         {
+          name: 'PvP Steve',
+          id: 'UU8Pdi3ylT6zVNomfsgQgSgA'
+        },
+        {
           name: 'JimmaBanks',
           id: 'UU4B6SokqkZ-Sg5ofLBWdG0Q'
         },

@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Youtubers from './components/youtubers/Youtubers';
 import EcElite4 from './components/EcElite4';
 import Login from './components/Login';
+import Account from './components/Account';
 
 class App extends Component{
 
@@ -50,15 +51,28 @@ class App extends Component{
 
   setLoggedIn = () => {
     axios.get('https://discordapp.com/api/users/@me',
-        {headers: {Authorization: `Bearer ${window.localStorage.getItem('discord_token')}`,}})
-        .then(res => {
-            window.localStorage.setItem('discord_user', JSON.stringify(res.data));
-            this.setState({
-              user: JSON.parse(window.localStorage.getItem('discord_user')),
-              loggedIn: true
-            })
-        })
-        .catch(err => console.log(err));
+      {headers: {Authorization: `Bearer ${window.localStorage.getItem('discord_token')}`,}})
+      .then(res => {
+        window.localStorage.setItem('discord_user', JSON.stringify(res.data));
+        this.setState({
+          user: JSON.parse(window.localStorage.getItem('discord_user')),
+          loggedIn: true
+        });
+      })
+      .catch(err => console.log(err));
+  }
+
+  getVerified = () => {
+    axios.get('https://discordapp.com/api/users/@me/guilds',
+      {headers: {Authorization: `Bearer ${window.localStorage.getItem('discord_token')}`,}})
+      .then( res => {
+        res.data.forEach(guild => {
+          if(guild.id === '549574028638027776'){
+            return true;
+          }
+        });
+        return false; //only hits this if user is not in TBP
+      }).catch(err => console.log(err));
   }
 
   render(){
@@ -77,6 +91,7 @@ class App extends Component{
               <Route path="/youtubers" component={Youtubers}/>
               <Route path="/ecelite4" component={EcElite4}/>
               <Route path="/login" component={() => <Login setLoggedIn={this.setLoggedIn}/>}/>
+              <Route path="/account" component={() => <Account getVerified={this.getVerified} user={this.state.user}/>}/>
             </Switch>
             <Footer/>
         </div>

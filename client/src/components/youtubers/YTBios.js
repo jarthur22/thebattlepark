@@ -30,7 +30,7 @@ class YTBios extends Component {
             {
                 name: 'Bestinwest',
                 key: '4',
-            bio: `Pokémon fan for over 20 years and avid video game collector/gamer. Love competition and testing my skill against others. I guess you could say I love being the Best ;)`,
+                bio: `Pokémon fan for over 20 years and avid video game collector/gamer. Love competition and testing my skill against others. I guess you could say I love being the Best ;)`,
                 logo: './profiles/Bestinwest.jpg',
                 channel: 'https://www.youtube.com/user/Bestinwest'
             },
@@ -40,6 +40,13 @@ class YTBios extends Component {
                 bio: `Hosted by an experienced Pokémon GO player and administrator of a local Toronto group with over 400 users, this channel features all you need to know about PoGo PVP.`,
                 logo: './profiles/jfarmakis.jpg',
                 channel: 'https://www.youtube.com/channel/UCPsLn8LXKrBMqXYE3B3GUFg'
+            },
+            {
+                name: 'PvP Steve',
+                key: '13',
+                bio: `PvP Steve is a man of many talents - noodly meta infographics made in MS Paint, tournament shoutcasts and battle videos, and writing bios about himself in the third person.`,
+                logo: './profiles/pvpsteve.jpg',
+                channel: 'https://www.youtube.com/channel/UC8Pdi3ylT6zVNomfsgQgSgA'
             },
             {
                 name: 'MattyFBaby',
