@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PodcastItem from './PodcastItem';
 
 class Podcast extends Component {
 
@@ -10,20 +11,32 @@ class Podcast extends Component {
     }
 
     componentDidMount() {
-        axios.get(`https://www.buzzsprout.com/api/${this.state.channelId}/episodes.json`)
+        axios.get(`https://www.buzzsprout.com/api/${this.state.channelId}/episodes.json?api_token=${this.state.token}`)
+        .then(res => {
+            this.setState({uploads: res.data});
+        }).catch(err => console.log(err));
     }
 
     render() {
         return (
-            <div style={{marginTop: '70px', textAlign: 'center', padding: '0vh 4vw'}}>
+            <div style={{alignSelf: 'center', marginTop: '70px', textAlign: 'center', padding: '0vh 4vw'}}>
                 <h1>The Competitive Edge Podcast</h1>
                 <p>Hosted by your very own ZyoniK and kltd32 (Kody), this weekly podcast brings you the latest in competitive PvP content.</p>
                 <br/>
                 <h2 style={{textAlign: 'left', marginLeft: '8vw', marginBottom: '-1vh'}}>Uploads</h2>
                 <hr style={{margin: '2vh 4vw'}}/>
 
-                <div style={{overflow: 'auto', height: '60vh', border: '1px solid white'}}>
-                    
+                <div style={{overflow: 'auto', height: '60vh', border: '1px solid gray', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto'}}>
+                    {
+                        this.state.uploads.map(upload => {
+                            return (
+                                <PodcastItem
+                                key={upload.id} 
+                                upload={upload}
+                                />
+                            )
+                        })
+                    }
                 </div>
             </div>
         )

@@ -160,6 +160,27 @@ header img:hover{background-color: #9aaae5;}
 }
 .team .mon{padding: 5px 10px;text-align: center}
 
+.podcast_upload{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    padding: 10px;
+    border-bottom: 1px #ccc groove;
+    
+}
+.pu_column{
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.p_nomargin{margin: 0}
+
+@media(max-width: 500px){
+    .pu_column{
+        max-width: 600px
+    }
+}
 
 @media (max-width: 380px) {
     .upload {
@@ -179,5 +200,11 @@ header img:hover{background-color: #9aaae5;}
         margin-left: 10px;
         flex: 25%;
         align-self: flex-start;
+    }
+    .pu_column{
+        max-width: 80vw
+    }
+    audio{
+        margin-left: -18px
     }
 }
