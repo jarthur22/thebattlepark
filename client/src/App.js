@@ -9,6 +9,7 @@ import Youtubers from './components/youtubers/Youtubers';
 import EcElite4 from './components/EcElite4';
 import Login from './components/Login';
 import Account from './components/Account';
+import Podcast from './components/Podcast';
 
 class App extends Component{
 
@@ -92,6 +93,7 @@ class App extends Component{
               <Route path="/ecelite4" component={EcElite4}/>
               <Route path="/login" component={() => <Login setLoggedIn={this.setLoggedIn}/>}/>
               <Route path="/account" component={() => <Account getVerified={this.getVerified} user={this.state.user}/>}/>
+              <Route path="/podcasts" component={Podcast}/>
             </Switch>
             <Footer/>
         </div>

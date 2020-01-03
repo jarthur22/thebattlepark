@@ -18,7 +18,7 @@ header img {
     float: left;
     height: 45px;
     width: 77px;
-    padding: 7px 15px;
+    padding: 7px 5px;
 }
 header img:hover{background-color: #9aaae5;}
 
@@ -27,8 +27,8 @@ header img:hover{background-color: #9aaae5;}
     display: block;
     color: #fff;
     text-decoration: none;
-    padding: 19px 10px;
-    font-size: large;
+    padding: 19px 5px;
+    font-size: medium;
 }
 
 

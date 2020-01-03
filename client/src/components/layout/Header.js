@@ -26,6 +26,7 @@ const Header = (props) => {
             </div>
             <div className="header_right">
                 {loginBtn}
+                <Link className="link" to="/podcasts">Podcasts</Link>
                 <Link className="link" to="/youtubers">Youtubers</Link>
                 <Link className="link" to="/">Home</Link>
             </div>
