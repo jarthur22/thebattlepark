@@ -3,29 +3,70 @@ import axios from 'axios';
 
 
 class Account extends Component {
+    _isMounted = false;
+    state= {
+        brackets: [],
+        bracketMembers: []
+    }
 
     componentDidMount() {
-        var cached_user = JSON.parse(window.localStorage.getItem("discord_user"));
-        if(cached_user && cached_user.timezone){
-            console.log("got it");
-        }
-        else if(cached_user && cached_user.id){
-            console.log("not here");
-            axios.get(`/api/members/${cached_user.id}`)
-            .then(res => {
-                console.log(res.data);
-                cached_user.timezone = res.data.timezone;
-                //cached_user.brackets = res.data.brackets;
-                //get all bracket data here
-                for(var i=0; i<res.data.brackets.length; i++){
-                    //get bracket data from other collection here
-                }
+        this._isMounted = true;
 
-                window.localStorage.setItem('discord_user', JSON.stringify(cached_user));
-            })
-            .catch(err => console.log(err));
+        var cached_user = JSON.parse(window.localStorage.getItem("discord_user"));
+        if(cached_user){
+            if(cached_user.brackets){
+                console.log("got it");
+                //get all bracket data here
+                for(let i=0; i<cached_user.brackets.length; i++){
+                    if(cached_user.brackets[i] !== 'Bracket Leader'){
+                        axios.get(`/api/members/bracket/${cached_user.brackets[i]}`)
+                        //eslint-disable-next-line
+                        .then(res => {
+                            if(this._isMounted){
+                                this.setState({
+                                    brackets: [...this.state.brackets, parseInt(cached_user.brackets[i].split('t')[1])],
+                                    bracketMembers: res.data
+                                });
+                            }
+                        }).catch(err => console.log(err));
+                    }
+                }
+            }
+            else if(cached_user.id){
+                console.log("not here");
+                axios.get(`/api/members/${cached_user.id}`)
+                .then(res => {
+                    console.log(res.data);
+                    cached_user.timezone = res.data.timezone;
+                    cached_user.brackets = res.data.brackets;
+                    //get all bracket data here
+                    for(var i=0; i<res.data.brackets.length; i++){
+                        if(res.data.brackets[i] !== 'Bracket Leader'){
+                            axios.get(`/api/members/bracket/${res.data.brackets[i]}`)
+                            //eslint-disable-next-line
+                            .then(res => {
+                                if(this._isMounted){
+                                    this.setState({
+                                        brackets: [...this.state.brackets, parseInt(cached_user.brackets[i].split('t')[1])],
+                                        bracketMembers: res.data
+                                    });
+                                }
+                            }).catch(err => console.log(err));
+                        }
+                    }
+                    
+                    window.localStorage.setItem('discord_user', JSON.stringify(cached_user));
+                })
+                .catch(err => console.log(err));
+            }
         }
     }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
+    //map seperate components instead of mapping divs
 
     render() {
         var user = this.props.user;
@@ -34,7 +75,21 @@ class Account extends Component {
             return(
                 <div style={thisStyle}>
                     <h1>Welcome, {user.username}!</h1>
-                    <p><i>New features coming soon!</i></p>
+                    {this.state.brackets.map(bracket => {
+                        return(
+                            <div key={bracket}>
+                                <h2>{`Bracket ${bracket} Members`}</h2>
+                                <hr/>
+                                {this.state.bracketMembers.map(member => {
+                                    return(
+                                        <div key={member.id}>
+                                            {member.username}
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        )
+                    })}
                 </div>
             )
         } else {
@@ -53,7 +108,7 @@ class Account extends Component {
 
 const thisStyle = {
     textAlign: 'center',
-    marginTop:'170px',
+    marginTop:'100px',
     height: '70vh',
     alignItems: 'center',
     padding: '0px 20px'
