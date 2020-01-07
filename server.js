@@ -3,14 +3,14 @@ const mongoose = require('mongoose');
 const mongoURI = 'mongodb+srv://bpapp:bpapp123@cluster0-kxab2.mongodb.net/thebattleparkdb?retryWrites=true&w=majority';
 const path = require('path');
 const e4 = require('./routes/api/e4');
-const discord = require('./routes/api/discord');
+const members = require('./routes/api/members')
 
 const app = express();
 app.use(express.json());
 
 //Use Routes
 app.use('/api/e4', e4);
-//app.use('/api/discord', discord);
+app.use('/api/members', members);
 
 
 //connect to mongoDB

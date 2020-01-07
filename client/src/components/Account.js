@@ -1,10 +1,30 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 
 class Account extends Component {
 
     componentDidMount() {
-        
+        var cached_user = JSON.parse(window.localStorage.getItem("discord_user"));
+        if(cached_user && cached_user.timezone){
+            console.log("got it");
+        }
+        else if(cached_user && cached_user.id){
+            console.log("not here");
+            axios.get(`/api/members/${cached_user.id}`)
+            .then(res => {
+                console.log(res.data);
+                cached_user.timezone = res.data.timezone;
+                //cached_user.brackets = res.data.brackets;
+                //get all bracket data here
+                for(var i=0; i<res.data.brackets.length; i++){
+                    //get bracket data from other collection here
+                }
+
+                window.localStorage.setItem('discord_user', JSON.stringify(cached_user));
+            })
+            .catch(err => console.log(err));
+        }
     }
 
     render() {
