@@ -19,6 +19,7 @@ class Login extends Component {
                 window.localStorage.setItem('discord_token', res.data.access_token)
                 console.log(res.data.access_token);
                 this.props.setLoggedIn();
+                window.location.href = '/#/account'
             }).catch(err => console.log(err));
         }
     }
