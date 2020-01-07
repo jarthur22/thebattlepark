@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 
 class Account extends Component {
 
+    componentDidMount() {
+        
+    }
+
     render() {
         var user = this.props.user;
 
