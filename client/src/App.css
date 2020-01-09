@@ -172,6 +172,16 @@ header img:hover{background-color: #9aaae5;}
 }
 .team .mon{padding: 5px 10px;text-align: center}
 
+.brackets{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+.bracket{
+    padding: 10px;
+}
+
+
 
 @media (max-width: 380px) {
     .upload {

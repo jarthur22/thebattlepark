@@ -8,7 +8,7 @@ import Home from './components/Home';
 import Youtubers from './components/youtubers/Youtubers';
 import EcElite4 from './components/EcElite4';
 import Login from './components/Login';
-import Account from './components/Account';
+import Account from './components/account/Account';
 import Podcast from './components/Podcast';
 
 class App extends Component{

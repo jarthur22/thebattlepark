@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import BracketMembers from './BracketMembers';
+import Timezones from './Timezones';
 import axios from 'axios';
 
 
@@ -19,13 +21,17 @@ class Account extends Component {
                 //get all bracket data here
                 for(let i=0; i<cached_user.brackets.length; i++){
                     if(cached_user.brackets[i] !== 'Bracket Leader'){
+                        let b = parseInt(cached_user.brackets[i].split('t')[1]);
                         axios.get(`/api/members/bracket/${cached_user.brackets[i]}`)
                         //eslint-disable-next-line
                         .then(res => {
                             if(this._isMounted){
                                 this.setState({
-                                    brackets: [...this.state.brackets, parseInt(cached_user.brackets[i].split('t')[1])],
-                                    bracketMembers: res.data
+                                    brackets: [...this.state.brackets, b],
+                                    bracketMembers: [...this.state.bracketMembers, {
+                                        bracket: b,
+                                        members: res.data
+                                    }]
                                 });
                             }
                         }).catch(err => console.log(err));
@@ -42,13 +48,17 @@ class Account extends Component {
                     //get all bracket data here
                     for(var i=0; i<res.data.brackets.length; i++){
                         if(res.data.brackets[i] !== 'Bracket Leader'){
+                            let b = parseInt(cached_user.brackets[i].split('t')[1]);
                             axios.get(`/api/members/bracket/${res.data.brackets[i]}`)
                             //eslint-disable-next-line
                             .then(res => {
                                 if(this._isMounted){
                                     this.setState({
-                                        brackets: [...this.state.brackets, parseInt(cached_user.brackets[i].split('t')[1])],
-                                        bracketMembers: res.data
+                                        brackets: [...this.state.brackets, b],
+                                        bracketMembers: [...this.state.bracketMembers, {
+                                            bracket: b,
+                                            members: res.data
+                                        }]
                                     });
                                 }
                             }).catch(err => console.log(err));
@@ -66,31 +76,19 @@ class Account extends Component {
         this._isMounted = false;
     }
 
-    //map seperate components instead of mapping divs
-
     render() {
         var user = this.props.user;
 
         if(this.props.getVerified){
             return(
-                <div style={thisStyle}>
-                    <h1>Welcome, {user.username}!</h1>
-                    {this.state.brackets.map(bracket => {
-                        return(
-                            <div key={bracket}>
-                                <h2>{`Bracket ${bracket} Members`}</h2>
-                                <hr/>
-                                {this.state.bracketMembers.map(member => {
-                                    return(
-                                        <div key={member.id}>
-                                            {member.username}
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                        )
-                    })}
-                </div>
+                <React.Fragment>
+                    <div style={thisStyle}>
+                        <h1>Welcome, {user.username}!</h1>
+                        <BracketMembers bracketMembers={this.state.bracketMembers}/>
+                        <Timezones bracketMembers={this.state.bracketMembers}/>
+                    </div>
+                    <br/>
+                </React.Fragment>
             )
         } else {
             return(
@@ -109,7 +107,6 @@ class Account extends Component {
 const thisStyle = {
     textAlign: 'center',
     marginTop:'100px',
-    height: '70vh',
     alignItems: 'center',
     padding: '0px 20px'
 }
