@@ -97,6 +97,7 @@ class YTBios extends Component {
         return (
             <div className="bios">
                 <div>
+                    <br/>
                     {this.state.bios.map((ytbio) => (
                         <YTBioItem key={ytbio.key} ytbio={ytbio}/>
                     ))}
