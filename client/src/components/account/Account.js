@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import BracketMembers from './BracketMembers';
-import Timezones from './Timezones';
+import {Link} from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import Bracket from './Bracket';
 import axios from 'axios';
 
 
@@ -80,16 +81,52 @@ class Account extends Component {
         var user = this.props.user;
 
         if(this.props.getVerified){
-            return(
-                <React.Fragment>
+            const brackets = this.state.bracketMembers;
+            if(brackets[0]){
+                const firstBracket = brackets[0];
+                return(
+                    <React.Fragment>
+                        <div style={thisStyle}>
+                            <h1>Welcome, {user.username}!</h1>
+                            <React.Fragment>
+                                <Router>
+                                    <Link className="yt_switch_el" to={`/account/bracket${firstBracket.bracket}`}>{`Bracket ${firstBracket.bracket}`}</Link>
+                                    {brackets.map(b => {
+                                        if(b.bracket === firstBracket.bracket) return null;
+                                        return(
+                                            <React.Fragment key={b.bracket}>
+                                                <Link className="yt_switch_el" to={`/account/bracket${b.bracket}`}>{`Bracket ${b.bracket}`}</Link>
+                                            </React.Fragment>
+                                        ) 
+                                    })}
+    
+                                    <Switch>
+                                        <Route exact path={`/account`} render={props => (<Bracket{...props} bracketMembers={firstBracket}/>)}/>
+                                        <Route path={`/account/bracket${firstBracket.bracket}`} render={props => (<Bracket{...props} bracketMembers={firstBracket}/>)}/>
+                                        {brackets.map(b => {
+                                            if(b.bracket === firstBracket.bracket) return null;
+                                            return(
+                                                <React.Fragment key={b.bracket}>
+                                                    <Route path={`/account/bracket${b.bracket}`} render={props => (<Bracket{...props} bracketMembers={b}/>)}/>
+                                                </React.Fragment>
+                                            )
+                                        })}
+                                    </Switch>
+                                </Router>
+                            </React.Fragment>
+                        </div>
+                        <br/>
+                    </React.Fragment>
+                )
+            }else {
+                return(
                     <div style={thisStyle}>
                         <h1>Welcome, {user.username}!</h1>
-                        <BracketMembers bracketMembers={this.state.bracketMembers}/>
-                        <Timezones bracketMembers={this.state.bracketMembers}/>
+                        <h2>Loading Account...</h2>
                     </div>
-                    <br/>
-                </React.Fragment>
-            )
+                )
+            }
+            
         } else {
             return(
                 <div style={thisStyle}>
