@@ -12,11 +12,11 @@ class PodcastItem extends Component {
             artwork_url,
             audio_url,
             description,
-            duration,
+            //duration,
             episode_number,
-            id,
+            //id,
             published_at,
-            summary,
+            //summary,
             title
         } = this.props.upload;
 

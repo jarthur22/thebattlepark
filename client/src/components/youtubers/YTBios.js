@@ -89,6 +89,13 @@ class YTBios extends Component {
                 bio: `With his trusty whiteboard, Atticus Nair brings you an in-depth analysis of the Pokemon GO PvP meta, including Silph Arena monthly Cups.`,
                 logo: './profiles/atticusnair.jpg',
                 channel: 'https://www.youtube.com/user/AtticusNair'
+            },
+            {
+                name: 'JrSkatr',
+                key: '14',
+                bio: 'Pokemon Go PvP YouTube coach giving you top level starts on the regular so you can be the very best!',
+                logo: './profiles/jrskatr.jpg',
+                channel: 'https://www.youtube.com/channel/UCIqDCG3pWKWKviFytutCs8w'
             }
         ]
     }

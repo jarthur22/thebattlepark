@@ -57,6 +57,10 @@ class Youtubers extends Component {
         {
           name: 'Atticus Nair',
           id: 'UUkSyL4NlI70Cd37qN6YHmNg'
+        },
+        {
+          name: 'JrSkatr',
+          id: 'UUIqDCG3pWKWKviFytutCs8w'
         }
       ]
     }
