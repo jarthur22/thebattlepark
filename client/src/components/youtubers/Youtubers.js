@@ -59,7 +59,7 @@ class Youtubers extends Component {
           id: 'UUkSyL4NlI70Cd37qN6YHmNg'
         },
         {
-          name: 'JrSkatr',
+          name: 'JRskatr',
           id: 'UUIqDCG3pWKWKviFytutCs8w'
         }
       ]

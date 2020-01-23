@@ -91,7 +91,7 @@ class YTBios extends Component {
                 channel: 'https://www.youtube.com/user/AtticusNair'
             },
             {
-                name: 'JrSkatr',
+                name: 'JRskatr',
                 key: '14',
                 bio: 'Pokemon Go PvP YouTube coach giving you top level starts on the regular so you can be the very best!',
                 logo: './profiles/jrskatr.jpg',
