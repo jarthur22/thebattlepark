@@ -181,6 +181,17 @@ header img:hover{background-color: #9aaae5;}
     padding: 10px;
 }
 
+.tournaments{
+    padding: 10px;
+}
+.tournaments table{
+    border: 2px solid grey;
+    padding: 4px;
+}
+.tournaments td{
+    border: 1px solid grey;
+    padding: 5px;
+}
 
 
 @media (max-width: 380px) {
