@@ -4,7 +4,8 @@ import axios from 'axios';
 class Tournaments extends Component {
     _isMounted = false;
     state= {
-        tournaments: []
+        tournaments: [],
+        empty: false
     }
 
     componentDidMount(){
@@ -12,9 +13,11 @@ class Tournaments extends Component {
         if(this.props.bracket){
             const {bracket} = this.props;
             axios.get(`/api/tournaments/${bracket}`).then(res => {
-                console.log(res.data);
                 if(this._isMounted){
                     this.setState({tournaments: res.data});
+                    if(res.data.length === 0){
+                        this.setState({empty: true});
+                    }
                 }
             }).catch(err => console.log(err));
         }
@@ -50,7 +53,15 @@ class Tournaments extends Component {
                     </table>
                 </div>
             )
-        } else {
+        } else if(this.state.empty){
+            return(
+                <div>
+                    <h2>Current Tournaments</h2>
+                    <p>No Tournaments to show. Ask your Bracket Leader to make more!</p>
+                </div>
+            )
+        }
+        else {
             return(
                 <div>
                     <h2>Current Tournaments</h2>
