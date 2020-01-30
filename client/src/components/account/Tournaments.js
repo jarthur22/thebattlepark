@@ -42,7 +42,7 @@ class Tournaments extends Component {
                                 return(
                                     <tr key={t._id}>
                                         <td>{t.title}</td>
-                                        <td><a href={t.rsvpurl} rel="noopener noreferrer" target="_blank">{t.rsvpurl}</a></td>
+                                        <td><a href={t.rsvpurl} rel="noopener noreferrer" target="_blank">GO!</a></td>
                                         <td>{t.rules}</td>
                                         <td>{t.date.split(',')[0]}</td>
                                         <td>{t.rsvps}</td>
@@ -55,7 +55,7 @@ class Tournaments extends Component {
             )
         } else if(this.state.empty){
             return(
-                <div>
+                <div className="tournaments">
                     <h2>Current Tournaments</h2>
                     <p>No Tournaments to show. Ask your Bracket Leader to make more!</p>
                 </div>
@@ -63,7 +63,7 @@ class Tournaments extends Component {
         }
         else {
             return(
-                <div>
+                <div className="tournaments">
                     <h2>Current Tournaments</h2>
                     <p>Loading...</p>
                 </div>

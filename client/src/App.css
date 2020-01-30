@@ -174,8 +174,9 @@ header img:hover{background-color: #9aaae5;}
 
 .brackets{
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: center;
+    width: 100vw;
 }
 .bracket{
     padding: 10px;
