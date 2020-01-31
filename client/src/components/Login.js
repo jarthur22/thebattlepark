@@ -44,6 +44,7 @@ class Login extends Component {
 const thisStyle = {
     textAlign: 'center',
     marginTop:'170px',
+    marginBottom: '100px'
 }
 
 export default Login;
