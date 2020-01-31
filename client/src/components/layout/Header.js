@@ -17,7 +17,7 @@ const Header = (props) => {
         border: "1px solid blue"}}/></Link> :
     <Link className="link" to="/login">Login</Link>;
 
-    
+    var {menuClicked} = props;
 
     return (
         <header>
@@ -29,6 +29,11 @@ const Header = (props) => {
                 <Link className="link" to="/podcasts">Podcasts</Link>
                 <Link className="link" to="/youtubers">Youtubers</Link>
                 <Link className="link" to="/">Home</Link>
+            </div>
+            <div className="hamburgermenu">
+                <button className="menuBtn" onClick={menuClicked}>
+                    <img src={`${process.env.PUBLIC_URL}/menu.png`} alt="menu"/>
+                </button>
             </div>
         </header>
     )

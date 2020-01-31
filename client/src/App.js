@@ -16,6 +16,7 @@ class App extends Component{
   state = {
     discordAuthCode: '',
     loggedIn: false,
+    openMenu: false,
     user: window.localStorage.getItem('discord_user') ?
       JSON.parse(window.localStorage.getItem('discord_user')):
       {}
@@ -76,6 +77,45 @@ class App extends Component{
       }).catch(err => console.log(err));
   }
 
+  menuClicked = () => {
+    this.setState({openMenu: !this.state.openMenu});
+  }
+
+  closeMenu = () => {
+    if(this.state.openMenu){
+      this.setState({openMenu: false});
+    }
+    
+  }
+
+  renderMenu = () => {
+    if(this.state.openMenu/*  && this.state.user */){
+      /* var avatarLink = this.state.user.id ?
+        `http://cdn.discordapp.com/avatars/${this.state.user.id}/${this.state.user.avatar}.png?size=2048` :
+        `${process.env.PUBLIC_URL}/bplogo.png`; */
+      console.log("openMenu true")
+      var loginBtn = this.state.loggedIn ?
+        <Link className="link" to="/account">My Account</Link> :
+        <Link className="link" to="/login">Login</Link>;
+
+      return(
+        <div className="menu" style={{
+          position: "fixed",
+          right: '0vw',
+          zIndex: "10",
+          height: "100vh",
+          width: "45vw",
+          backgroundColor: "#738adb"
+        }}>
+          <Link className="link" to="/">Home</Link>
+          <Link className="link" to="/youtubers">Youtubers</Link>
+          <Link className="link" to="/podcasts">Podcasts</Link>
+          {loginBtn}
+        </div>
+      )
+    }
+  }
+
   render(){
 
     if(this.state.discordAuthCode !== ''){
@@ -85,8 +125,9 @@ class App extends Component{
 
     return (
       <Router>
-        <div className="App" style={this.getStyle()}>
-            <Header loggedIn={this.state.loggedIn} user={this.state.user}/>
+        <div className="App" style={this.getStyle()} onClick={this.closeMenu}>
+            <Header loggedIn={this.state.loggedIn} user={this.state.user} menuClicked={this.menuClicked}/>
+            {this.renderMenu()}
             <Switch>
               <Route exact path="/" component={Home}/>
               <Route path="/youtubers" component={Youtubers}/>

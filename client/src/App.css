@@ -21,6 +21,42 @@ header img {
     padding: 7px 5px;
 }
 header img:hover{background-color: #9aaae5;}
+.hamburgermenu{
+    float: right;
+    display: none;
+}
+header button{
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 5px;
+    outline: inherit;
+}
+.menuBtn img{width: 30px; height: 30px;};
+.menu{
+    position: fixed;
+    z-index: 10;
+}
+.menu .link{
+    text-decoration: none;
+    color: white;
+    font-size: large;
+    width: 40vw;
+    height: 30px;
+    padding: 5px;
+    padding-top: 15px;
+    display: flex;
+    flex-flow: column nowrap;
+    border-bottom: 2px groove gray;
+}
+@media (max-width: 500px){
+    .hamburgermenu{
+        display: block;
+    }
+    .header_right{
+        display: none;
+    }
+}
 
 .link {
     float: right;
