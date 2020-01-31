@@ -18,9 +18,45 @@ header img {
     float: left;
     height: 45px;
     width: 77px;
-    padding: 7px 10px;
+    padding: 7px 5px;
 }
 header img:hover{background-color: #9aaae5;}
+.hamburgermenu{
+    float: right;
+    display: none;
+}
+header button{
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 5px;
+    outline: inherit;
+}
+.menuBtn img{width: 30px; height: 30px;};
+.menu{
+    position: fixed;
+    z-index: 10;
+}
+.menu .link{
+    text-decoration: none;
+    color: white;
+    font-size: large;
+    width: 40vw;
+    height: 30px;
+    padding: 5px;
+    padding-top: 15px;
+    display: flex;
+    flex-flow: column nowrap;
+    border-bottom: 2px groove gray;
+}
+@media (max-width: 500px){
+    .hamburgermenu{
+        display: block;
+    }
+    .header_right{
+        display: none;
+    }
+}
 
 .link {
     float: right;
@@ -30,7 +66,19 @@ header img:hover{background-color: #9aaae5;}
     padding: 19px 5px;
     font-size: medium;
 }
-.link:hover {background-color: #9aaae5;}
+
+
+.profile_link{
+    float: right;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 4px 10px;
+    margin-left:-8px;
+    font-size: medium;
+}
+
+.link:hover, .profile_link:hover {background-color: #9aaae5;}
 
 .discord_button {
     background-color: #738adb;
@@ -58,7 +106,7 @@ header img:hover{background-color: #9aaae5;}
     border: none;
     background-color: none;
     color: white;
-    font-size: 30px;
+    font-size: 25px;
     font-style: bold;
 }
 .yt_switch_el:hover {
@@ -93,7 +141,7 @@ header img:hover{background-color: #9aaae5;}
 }
 .bio a{text-decoration: none;color:white;}
 .bio h2{
-    padding-top:10px;
+    padding-top:20px;
     padding-left: 20%;
 }
 .bio h2:hover {
@@ -160,27 +208,28 @@ header img:hover{background-color: #9aaae5;}
 }
 .team .mon{padding: 5px 10px;text-align: center}
 
-.podcast_upload{
+.brackets{
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: baseline;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 100vw;
+}
+.bracket{
     padding: 10px;
-    border-bottom: 1px #ccc groove;
-    
 }
-.pu_column{
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.p_nomargin{margin: 0}
 
-@media(max-width: 500px){
-    .pu_column{
-        max-width: 600px
-    }
+.tournaments{
+    padding: 10px;
 }
+.tournaments table{
+    border: 2px solid grey;
+    padding: 4px;
+}
+.tournaments td{
+    border: 1px solid grey;
+    padding: 5px;
+}
+
 
 @media (max-width: 380px) {
     .upload {
@@ -200,11 +249,5 @@ header img:hover{background-color: #9aaae5;}
         margin-left: 10px;
         flex: 25%;
         align-self: flex-start;
-    }
-    .pu_column{
-        max-width: 80vw
-    }
-    audio{
-        margin-left: -18px
     }
 }

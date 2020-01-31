@@ -11,7 +11,7 @@ function Footer() {
 const footerStyle = {
     display: 'block',
     textAlign: 'center',
-    padding: '15px',
+    padding: '10px',
     bottom: '0',
     borderTop: '2px solid grey'
 }
