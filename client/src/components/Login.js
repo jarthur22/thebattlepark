@@ -5,7 +5,8 @@ import btoa from 'btoa';
 class Login extends Component {
     CLIENT_ID = '562770948764205077';
     CLIENT_SECRET = '-eQrhkMMZS-aEvuzpCJuoQ9z6BMNZdSk'
-    redirect = encodeURIComponent('http://localhost:3000/');
+    //redirect = encodeURIComponent('http://localhost:3000/');
+    redirect = encodeURIComponent('https://www.thebattlepark.com/');
     code = '';
 
     componentDidMount() {
