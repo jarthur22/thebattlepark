@@ -7,7 +7,7 @@ class BracketMembers extends Component {
             <div className='bracket' key={bracket.bracket}>
                 <h2>{`Bracket ${bracket.bracket} Members`}</h2>
                 <hr/>
-                <table>
+                <table style={{margin: "auto"}}>
                     <tbody>
                     {bracket.members.map(member => {
                         return(

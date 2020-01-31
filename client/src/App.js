@@ -93,7 +93,6 @@ class App extends Component{
       /* var avatarLink = this.state.user.id ?
         `http://cdn.discordapp.com/avatars/${this.state.user.id}/${this.state.user.avatar}.png?size=2048` :
         `${process.env.PUBLIC_URL}/bplogo.png`; */
-      console.log("openMenu true")
       var loginBtn = this.state.loggedIn ?
         <Link className="link" to="/account">My Account</Link> :
         <Link className="link" to="/login">Login</Link>;

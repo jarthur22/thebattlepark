@@ -9,9 +9,10 @@ class Home extends Component {
             <React.Fragment>
                 <div style={thisStyle}>
                     <h1 style={headerStyle}>WELCOME TO <br/>THE BATTLE PARK!</h1>
-                    <p style={{fontSize: 'medium', textShadow: '2px 1px grey', marginTop:'-20px'}}>Get ready to bring your Discord battling experience to a new level.
+                    <p style={{fontSize: 'medium', textShadow: '2px 1px grey', marginTop:'-20px', padding: '5px'}}>Get ready to bring your Discord battling experience to a new level.
                     <br/>
-                    (More features coming soon!)</p>
+                    <br/>
+                    Now see your Battle Park Bracket info by Logging In!</p>
                     <br/>
                     <br/>
                     <a className="discord_button" href="https://discord.gg/c4EyDNQ">Click to Join Our Discord Server!</a>

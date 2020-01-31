@@ -20,10 +20,9 @@ class Podcast extends Component {
     render() {
         return (
             <div style={{alignSelf: 'center', marginTop: '70px', textAlign: 'center', padding: '0vh 4vw'}}>
-                <h1>The Competitive Edge Podcast</h1>
+                <h2>The Competitive Edge Podcast</h2>
                 <p>Hosted by your very own ZyoniK and kltd32 (Kody), this weekly podcast brings you the latest in competitive PvP content.</p>
-                <br/>
-                <h2 style={{textAlign: 'left', marginLeft: '8vw', marginBottom: '-1vh'}}>Uploads</h2>
+                <h3 style={{textAlign: 'left', marginLeft: '8vw', marginBottom: '-1vh'}}>Uploads</h3>
                 <hr style={{margin: '2vh 4vw'}}/>
 
                 <div style={{overflow: 'auto', height: '60vh', border: '1px solid gray', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto'}}>
