@@ -81,10 +81,13 @@ header button{
 .link:hover, .profile_link:hover {background-color: #9aaae5;}
 
 .discord_button {
+    width: 170px;
     background-color: #738adb;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     text-decoration: none;
     font-size: medium;
