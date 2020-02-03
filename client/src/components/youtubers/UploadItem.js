@@ -23,7 +23,7 @@ class UploadItem extends Component {
                 <div className="u_column">
                     <a className="video_link" href={videoUrl}>{title}</a>
                     <br/>
-                    <a className="channel_link" href={channelUrl}>{channelTitle}</a>
+                    <a className="channel_link" href={channelUrl} rel="noopener noreferrer" target="_blank">{channelTitle}</a>
                 </div>
             </div>
         )
