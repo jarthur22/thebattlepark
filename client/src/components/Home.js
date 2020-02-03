@@ -27,7 +27,7 @@ class Home extends Component {
                     </p>
                     <a className="discord_button" href="https://discord.gg/c4EyDNQ">Click to Join Our Discord Server!</a>
                     <br/>
-                    <p>
+                    <p style={{fontSize: 'medium', textShadow: '2px 1px grey',padding: '5px'}}>
                         Already in the server? Log in with Discord or view your account!
                         <br/>
                     </p>
