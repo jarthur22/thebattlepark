@@ -17,11 +17,11 @@ class UploadItem extends Component {
        
         return (
             <div className="upload">
-                <a href={videoUrl}>
+                <a href={videoUrl} rel="noopener noreferrer" target="_blank">
                     <img src={thumbnail} alt={title} style={{height:'100px'}}/>
                 </a>
                 <div className="u_column">
-                    <a className="video_link" href={videoUrl}>{title}</a>
+                    <a className="video_link" href={videoUrl} rel="noopener noreferrer" target="_blank">{title}</a>
                     <br/>
                     <a className="channel_link" href={channelUrl} rel="noopener noreferrer" target="_blank">{channelTitle}</a>
                 </div>
