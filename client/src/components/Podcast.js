@@ -25,7 +25,7 @@ class Podcast extends Component {
                 <h3 style={{textAlign: 'left', marginLeft: '8vw', marginBottom: '-1vh'}}>Uploads</h3>
                 <hr style={{margin: '2vh 4vw'}}/>
 
-                <div style={{overflow: 'auto', height: '60vh', border: '1px solid gray', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto'}}>
+                <div style={{border: '1px solid gray', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto'}}>
                     {
                         this.state.uploads.map(upload => {
                             return (
