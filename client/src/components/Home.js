@@ -25,7 +25,7 @@ class Home extends Component {
                         Get ready to bring your Discord battling experience to a new level.
                         <br/>
                     </p>
-                    <a className="discord_button" href="https://discord.gg/c4EyDNQ">Click to Join Our Discord Server!</a>
+                    <a className="discord_button" href="https://discord.gg/CejQUtj">Click to Join Our Discord Server!</a>
                     <br/>
                     <p style={{fontSize: 'medium', textShadow: '2px 1px grey',padding: '5px'}}>
                         Already in the server? Log in with Discord or view your account!
