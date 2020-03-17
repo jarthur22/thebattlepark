@@ -16,18 +16,37 @@ class Uploads extends Component {
     }
 
     render() {
-        return (
-            <div>
-                <br/>
-                <br/>
-                <div style={this.getStyle()}>
-                {this.props.uploads.map((upload) => (
-                    <UploadItem key={upload.resourceId.videoId} upload={upload}/>
-                ))}
+        if(this.props.apiError){
+            return(
+                <div>
+                    <br/>
+                    <br/>
+                    <div style={this.getStyle()}>
+                        <h2>
+                            Uploads are currently not available.
+                        </h2>
+                        <p style={{textAlign: 'center', padding: '10px'}}>
+                            There may be an issue with the YouTube API, or a routine maintenance may be underway. Check back later or bring your questions to Ruah22#1562 on Discord.
+                        </p>
+                        <br/>
+                        <br/>
+                    </div>
                 </div>
-            </div>
-            
-        );
+            )
+        }else {
+            return (
+                <div>
+                    <br/>
+                    <br/>
+                    <div style={this.getStyle()}>
+                    {this.props.uploads.map((upload) => (
+                        <UploadItem key={upload.resourceId.videoId} upload={upload} reportAPIError={this.reportAPIError}/>
+                    ))}
+                    </div>
+                </div>
+                
+            );
+        }
     }
 }
 

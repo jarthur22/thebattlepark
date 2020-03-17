@@ -7,8 +7,9 @@ import {Link} from 'react-router-dom';
 
 class Youtubers extends Component {
     state = {
-      apiKey: 'AIzaSyDaCTRJP5daWRt8EQ6hxmyNC8IQzpKBFxY',
+      apiKey: 'AIzaSyAx2ngjiob240VJ3saZb62Ml5jRDUwcZ4I',
       uploads: [],
+      apiError: false,
       channelIDs: [
         {
           name: 'ZyoniK',
@@ -68,7 +69,13 @@ class Youtubers extends Component {
     componentDidMount() {
         this.state.channelIDs.forEach(channel => {
           axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=1&playlistId=${channel.id}&key=${this.state.apiKey}`)
-        .then(res => this.setState({uploads: [...this.state.uploads, res.data.items[0].snippet]}))
+          .then(res => this.setState({uploads: [...this.state.uploads, res.data.items[0].snippet]}))
+          .catch(err => {
+            if(err.status === 403){
+              this.setState({apiError: true});
+            }
+            console.log(err);
+          });
         });
     }
 
@@ -92,7 +99,7 @@ class Youtubers extends Component {
                 <Switch>
                   <Route exact path="/youtubers" component={YTBios}/>
                   <Route path="/youtubers/bios" component={YTBios}/>
-                  <Route path="/youtubers/uploads" render={props => (<Uploads{...props} uploads={this.state.uploads}/>)}/>
+                  <Route path="/youtubers/uploads" render={props => (<Uploads{...props} uploads={this.state.uploads} apiError={this.state.apiError}/>)}/>
                 </Switch>
               </Router>
               {/* <YTBios/>
